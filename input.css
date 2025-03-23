@@ -1,100 +1,120 @@
 @import "tailwindcss";
 
-/* Base styles */
-body {
-margin: 0;
-padding: 0;
-font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-background-color: #202127;
-color: white;
-min-height: 100vh;
+.kanit-thin {
+    font-family: "Kanit", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+  }
+  
+  .kanit-extralight {
+    font-family: "Kanit", sans-serif;
+    font-weight: 200;
+    font-style: normal;
+  }
+  
+  .kanit-light {
+    font-family: "Kanit", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+  }
+  
+  .kanit-regular {
+    font-family: "Kanit", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .kanit-medium {
+    font-family: "Kanit", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+  .kanit-semibold {
+    font-family: "Kanit", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+  }
+  
+  .kanit-bold {
+    font-family: "Kanit", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  .kanit-extrabold {
+    font-family: "Kanit", sans-serif;
+    font-weight: 800;
+    font-style: normal;
+  }
+  
+  .kanit-black {
+    font-family: "Kanit", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+  }
+  
+  .kanit-thin-italic {
+    font-family: "Kanit", sans-serif;
+    font-weight: 100;
+    font-style: italic;
+  }
+  
+  .kanit-extralight-italic {
+    font-family: "Kanit", sans-serif;
+    font-weight: 200;
+    font-style: italic;
+  }
+  
+  .kanit-light-italic {
+    font-family: "Kanit", sans-serif;
+    font-weight: 300;
+    font-style: italic;
+  }
+  
+  .kanit-regular-italic {
+    font-family: "Kanit", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+  }
+  
+  .kanit-medium-italic {
+    font-family: "Kanit", sans-serif;
+    font-weight: 500;
+    font-style: italic;
+  }
+  
+  .kanit-semibold-italic {
+    font-family: "Kanit", sans-serif;
+    font-weight: 600;
+    font-style: italic;
+  }
+  
+  .kanit-bold-italic {
+    font-family: "Kanit", sans-serif;
+    font-weight: 700;
+    font-style: italic;
+  }
+  
+  .kanit-extrabold-italic {
+    font-family: "Kanit", sans-serif;
+    font-weight: 800;
+    font-style: italic;
+  }
+  
+  .kanit-black-italic {
+    font-family: "Kanit", sans-serif;
+    font-weight: 900;
+    font-style: italic;
+  }
+  
+
+@theme {
+  --font-sans: "Kanit", ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --breakpoint-lg: 1300px;
 }
 
-@import "tailwindcss";
-
-/* Typography */
-h1, h2, h3, h4, h5, h6 {
-margin: 0;
-}
-
-a {
-color: inherit;
-text-decoration: none;
-}
-
-/* Layout */
-.container {
-max-width: 1280px;
-margin: 0 auto;
-padding: 0 1rem;
-}
-
-.max-w-5xl {
-max-width: 64rem;
-margin: 0 auto;
-}
-
-/* Navigation */
-nav {
-position: fixed;
-top: 0;
-left: 0;
-right: 0;
-z-index: 10;
-border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-background-color: #202127;
-}
-
-.nav-container {
-display: flex;
-justify-content: space-between;
-align-items: center;
-padding: 1.5rem 1rem;
-}
-
-@media (min-width: 1024px) {
-.nav-container {
-    padding: 1.5rem 4rem;
-}
-}
-
-.logo-container {
-display: flex;
-align-items: center;
-}
-
-.logo {
-width: 2.5rem;
-height: 2.5rem;
-margin-right: 0.5rem;
-}
-
-.nav-links {
-display: none;
-}
-
-@media (min-width: 768px) {
-.nav-links {
-    display: flex;
-    gap: 2rem;
-}
-}
-
-.nav-link {
-transition: color 0.3s;
-}
-
-.nav-link:hover {
-color: #FFB200;
-}
-
-.mobile-menu-button {
-background: none;
-border: none;
-color: white;
-cursor: pointer;
-display: block;
-}
 
 @media (min-width: 768px) {
 .mobile-menu-button {
@@ -104,380 +124,10 @@ display: block;
 
 .mobile-menu {
 display: none;
-padding: 1rem;
-border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .mobile-menu.open {
 display: block;
-}
-
-.mobile-menu-links {
-display: flex;
-flex-direction: column;
-gap: 1rem;
-}
-
-/* Sections */
-section {
-padding: 4rem 1rem;
-}
-
-@media (min-width: 1024px) {
-section {
-    padding: 6rem 4rem;
-}
-}
-
-/* Hero Section */
-.hero {
-padding-top: 8rem;
-background: linear-gradient(to right, #202127 60%, #FFB200);
-}
-
-@media (min-width: 768px) {
-.hero-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-}
-}
-
-.hero-title-small {
-color: #FFB200;
-font-size: 1.25rem;
-margin-bottom: 1.5rem;
-}
-
-.hero-main {
-display: flex;
-flex-wrap: wrap;
-}
-
-.hero-logo {
-width: 15rem;
-height: 15rem;
-}
-
-.hero-title {
-font-size: 3rem;
-font-weight: bold;
-margin-bottom: 2rem;
-line-height: 1.1;
-}
-
-@media (min-width: 768px) {
-.hero-title {
-    font-size: 4.5rem;
-}
-}
-
-.hero-description {
-font-size: 1.25rem;
-margin-bottom: 3rem;
-max-width: 42rem;
-}
-
-@media (min-width: 768px) {
-.hero-description {
-    font-size: 1.5rem;
-}
-}
-
-.hero-image {
-object-fit: cover;
-width: 100%;
-}
-
-@media (min-width: 1024px) {
-.hero-image {
-    max-height: 37.5rem;
-}
-}
-
-/* Button styles */
-.btn {
-display: inline-block;
-font-weight: bold;
-padding: 1rem 2rem;
-border-radius: 9999px;
-cursor: pointer;
-transition: all 0.3s;
-text-align: center;
-}
-
-.btn-outline-white {
-border: 2px solid white;
-}
-
-.btn-outline-white:hover {
-background-color: white;
-color: #202127;
-}
-
-.btn-primary {
-background-color: #FFB200;
-color: #202127;
-}
-
-.btn-primary:hover {
-opacity: 0.9;
-}
-
-/* About Section */
-.about {
-background-color: #111111;
-}
-
-.section-title-small {
-color: #FFB200;
-font-size: 1.25rem;
-margin-bottom: 0.5rem;
-}
-
-.section-title {
-font-size: 2.25rem;
-font-weight: bold;
-margin-bottom: 3rem;
-}
-
-@media (min-width: 768px) {
-.section-title {
-    font-size: 3rem;
-}
-}
-
-.about-content {
-display: grid;
-gap: 3rem;
-}
-
-@media (min-width: 768px) {
-.about-content {
-    grid-template-columns: 1fr 1fr;
-}
-}
-
-.about-text {
-font-size: 1.125rem;
-margin-bottom: 1.5rem;
-}
-
-.harms-title {
-color: #FFB200;
-font-size: 1.5rem;
-font-weight: bold;
-margin-bottom: 1rem;
-}
-
-.harms-list {
-list-style: none;
-padding: 0;
-margin: 0;
-display: flex;
-flex-direction: column;
-gap: 1rem;
-}
-
-.harms-item {
-display: flex;
-align-items: flex-start;
-}
-
-.harms-bullet {
-color: #FFB200;
-margin-right: 0.75rem;
-}
-
-/* How It Works Section */
-.how-it-works {
-border-top: 1px solid #333;
-}
-
-.how-it-works-content {
-display: grid;
-gap: 4rem;
-}
-
-@media (min-width: 768px) {
-.how-it-works-content {
-    grid-template-columns: 1fr 1fr;
-}
-}
-
-.how-image-container {
-aspect-ratio: 1 / 1;
-background-color: #333;
-border-radius: 0.5rem;
-display: flex;
-align-items: center;
-justify-content: center;
-}
-
-.how-image {
-width: 100%;
-height: 100%;
-object-fit: cover;
-}
-
-.pillars {
-display: flex;
-flex-direction: column;
-gap: 2rem;
-}
-
-.pillar-title {
-font-size: 1.25rem;
-font-weight: bold;
-margin-bottom: 0.5rem;
-}
-
-/* Technical Architecture */
-.tech {
-background-color: #111111;
-}
-
-.tech-content {
-display: grid;
-gap: 4rem;
-}
-
-@media (min-width: 768px) {
-.tech-content {
-    grid-template-columns: 1fr 1fr;
-}
-}
-
-.tech-title {
-font-size: 1.5rem;
-font-weight: bold;
-margin-bottom: 1.5rem;
-}
-
-.tech-text {
-font-size: 1.125rem;
-margin-bottom: 2rem;
-}
-
-.tech-cards {
-display: flex;
-flex-direction: column;
-gap: 1.5rem;
-}
-
-.tech-card {
-background-color: #333;
-padding: 1.5rem;
-border-radius: 0.5rem;
-}
-
-.tech-card-yellow {
-background-color: #FFB200;
-color: #202127;
-}
-
-.tech-card-title {
-font-size: 1.25rem;
-font-weight: bold;
-margin-bottom: 0.75rem;
-}
-
-/* Applications Section */
-.applications {
-border-top: 1px solid #333;
-}
-
-.app-grid {
-display: grid;
-gap: 2rem;
-grid-template-columns: 1fr;
-}
-
-@media (min-width: 768px) {
-.app-grid {
-    grid-template-columns: 1fr 1fr;
-}
-}
-
-@media (min-width: 1024px) {
-.app-grid {
-    grid-template-columns: repeat(4, 1fr);
-}
-}
-
-.app-card {
-background-color: #333;
-padding: 1.5rem;
-border-radius: 0.5rem;
-transition: background-color 0.3s;
-}
-
-.app-card:hover {
-background-color: #444;
-}
-
-.app-title {
-font-size: 1.25rem;
-font-weight: bold;
-margin-bottom: 1rem;
-}
-
-/* Why TAS Section */
-.why-tas {
-background-image: url('public/img/TAS Media Wide.jpg');
-background-size: 100%;
-background-position: right;
-background-repeat: no-repeat;
-background-attachment: fixed;
-padding: 0;
-}
-
-.why-tas-overlay {
-background: linear-gradient(to right, rgba(17, 17, 17, 0.95) 30%, transparent);
-padding: 4rem 1rem;
-}
-
-@media (min-width: 1024px) {
-.why-tas-overlay {
-    padding: 6rem 4rem;
-}
-}
-
-.diff-grid {
-display: grid;
-gap: 2rem;
-grid-template-columns: 1fr;
-}
-
-@media (min-width: 768px) {
-.diff-grid {
-    grid-template-columns: repeat(3, 1fr);
-}
-}
-
-.diff-card {
-background-color: #202127;
-padding: 1.5rem;
-border-radius: 0.5rem;
-border: 1px solid #FFB200;
-}
-
-.diff-title {
-font-size: 1.25rem;
-font-weight: bold;
-margin-bottom: 1rem;
-color: #FFB200;
-}
-
-.cta {
-margin-top: 3rem;
-text-align: center;
-}
-
-.cta-title {
-font-size: 1.5rem;
-font-weight: bold;
-margin-bottom: 1.5rem;
 }
 
 /* Footer */
