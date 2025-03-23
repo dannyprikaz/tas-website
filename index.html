@@ -6,260 +6,274 @@
   <title>TAS - True Authentic Self</title>
   <link rel="stylesheet" href="style.css">
   <link rel="shortcut icon" type="image/x-icon" href="public/favicon.ico?">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="min-h-screen bg-[#202127] text-white font-sans">
   <!-- Navigation -->
-  <nav>
-    <div class="nav-container">
-      <div class="logo-container">
-        <div class="logo">
+  <nav class="fixed inset-x-0 top-0 z-10 border-b border-gray-950/5 dark:border-white/10 bg-inherit">
+    <div class="px-4 py-6 flex justify-between sticky items-center lg:px-16">
+      <div class="flex items-center">
+        <div class="mr-2 w-10 h-10 relative">
           <a href="#hero">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              class="w-full h-full"
+            >
               <g stroke='white' stroke-width='0.8' fill='none' stroke-linejoin='round' stroke-linecap='square'>
-                <path d="m 19,14 v 5 h -5"/>
-                <path d="m 14,1 h 5 v 5"/>
-                <path d="M 1,6 V 1 h 5"/>
-                <path d="m 6.00004,19 h -5 v -5"/>
-                <path d="m 10,4.5 v 11 M 6,4.5 h 8 M 11.5,17 H 8 V 7.5673435 M 7,6.5 H 4 v -2 M 4,3 h 12 v 3.5 h -4 v 9"/>
+              <path d="m 19,14 v 5 h -5"/>
+              <path d="m 14,1 h 5 v 5"/>
+              <path d="M 1,6 V 1 h 5"/>
+              <path d="m 6.00004,19 h -5 v -5"/>
+              <path d="m 10,4.5 v 11 M 6,4.5 h 8 M 11.5,17 H 8 V 7.5673435 M 7,6.5 H 4 v -2 M 4,3 h 12 v 3.5 h -4 v 9"/>
               </g>
             </svg>
           </a>
         </div>
         <a href="#hero">
-          <h1 class="logo-text">TAS</h1>
+          <h1 class="text-2xl font-bold">TAS</h1>
         </a>
       </div>
       
-      <div class="nav-links">
-        <a href="#about" class="nav-link">ABOUT</a>
-        <a href="#how-it-works" class="nav-link">HOW IT WORKS</a>
-        <a href="#applications" class="nav-link">APPLICATIONS</a>
+      <div class="hidden md:flex space-x-8">
+        <a href="#about" class="hover:text-[#FFB200] transition-colors">ABOUT</a>
+        <a href="#how-it-works" class="hover:text-[#FFB200] transition-colors">HOW IT WORKS</a>
+        <a href="#applications" class="hover:text-[#FFB200] transition-colors">APPLICATIONS</a>
       </div>
       
-      <button class="mobile-menu-button" onclick="toggleMenu()">
-        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-        </svg>
-      </button>
+      <div class="fixed right-0">
+        <button class="md:hidden" onClick="toggleMenu()">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
     </div>
     
     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="mobile-menu">
-      <div class="mobile-menu-links">
-        <a href="#about" class="nav-link">ABOUT</a>
-        <a href="#how-it-works" class="nav-link">HOW IT WORKS</a>
-        <a href="#applications" class="nav-link">APPLICATIONS</a>
+    <div id="mobile-menu" class="mobile-menu border-b border-gray-950/5 dark:border-white/10">
+      <div class="md:hidden bg-[#202127] p-4">
+        <div class="flex flex-col space-y-4">
+          <a href="#about" class="hover:text-[#FFB200] transition-colors">ABOUT</a>
+          <a href="#how-it-works" class="hover:text-[#FFB200] transition-colors">HOW IT WORKS</a>
+          <a href="#applications" class="hover:text-[#FFB200] transition-colors">APPLICATIONS</a>
+        </div>
       </div>
     </div>
   </nav>
   
   <!-- Hero Section -->
-  <section id="hero" class="hero">
-    <div class="max-w-5xl">
-      <div class="hero-content">
+  <div id="hero" class="px-4 py-16 lg:h-160 lg:px-16 py-24 md:grid md:grid-cols-2 bg-linear-to-r from-[#202127] from-60% to-[#FFB200]">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-[#FFB200] text-xl mb-6">TRUST IN THE AGE OF AI</h2>
+      <div class='flex flex-wrap grid-cols-2'>
         <div>
-          <h2 class="hero-title-small">TRUST IN THE AGE OF AI</h2>
-          <div class="hero-main">
-            <div>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="hero-logo">
-                <g stroke='white' stroke-width='0.8' fill='none' stroke-linejoin='round' stroke-linecap='square'>
-                  <path d="m 19,14 v 5 h -5"/>
-                  <path d="m 14,1 h 5 v 5"/>
-                  <path d="M 1,6 V 1 h 5"/>
-                  <path d="m 6.00004,19 h -5 v -5"/>
-                  <path d="m 10,4.5 v 11 M 6,4.5 h 8 M 11.5,17 H 8 V 7.5673435 M 7,6.5 H 4 v -2 M 4,3 h 12 v 3.5 h -4 v 9"/>
-                </g>
-              </svg>
-            </div>
-            <h1 class="hero-title">True<br>Authentic<br>Self</h1>
-          </div>
-          <p class="hero-description">
-            TAS provides a visible solution for content authentication so everyone can tell when you're really you.
-          </p>
-          <div>
-            <a href="#how-it-works">
-              <button class="btn btn-outline-white">
-                LEARN MORE
-              </button>
-            </a>
-          </div>
-        </div>
-        <div>
-          <img class="hero-image" src="public/img/TAS Media (1).jpg" alt="TAS hero image">
-        </div>
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            class="w-60 h-60"
+          >
+            <g stroke='white' stroke-width='0.8' fill='none' stroke-linejoin='round' stroke-linecap='square'>
+            <path d="m 19,14 v 5 h -5"/>
+            <path d="m 14,1 h 5 v 5"/>
+            <path d="M 1,6 V 1 h 5"/>
+            <path d="m 6.00004,19 h -5 v -5"/>
+            <path d="m 10,4.5 v 11 M 6,4.5 h 8 M 11.5,17 H 8 V 7.5673435 M 7,6.5 H 4 v -2 M 4,3 h 12 v 3.5 h -4 v 9"/>
+            </g>
+          </svg></div>
+          <h1 class="text-5xl md:text-7xl font-bold mb-8">True<br />Authentic<br />Self</h1>
+      </div>
+      <p class="text-xl md:text-2xl mb-12 max-w-2xl">
+        TAS provides a visible solution for content authentication so everyone can tell when you're really you.
+      </p>
+      <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6">
+        <a href="#how-it-works">
+        <button class="border-2 border-white px-8 py-4 rounded-full font-bold hover:bg-white hover:text-[#202127] transition-colors mb-5">
+          LEARN MORE
+        </button>
+        </a>
       </div>
     </div>
-  </section>
+    <div>
+      <img class='min-h-full lg:max-h-150 object-cover' src='public/img/TAS Media (1).jpg'></img>
+    </div>
+  </div>
   
   <!-- About Section -->
-  <section id="about" class="about">
-    <div class="max-w-5xl">
-      <h2 class="section-title-small">ABOUT TAS</h2>
-      <h3 class="section-title">THE GROWING THREAT OF SYNTHETIC MEDIA</h3>
+  <div id="about" class="px-4 py-16 lg:px-16 lg:py-24 bg-gray-900">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-[#FFB200] text-xl mb-2">ABOUT TAS</h2>
+      <h3 class="text-4xl md:text-5xl font-bold mb-12">THE GROWING THREAT OF SYNTHETIC MEDIA</h3>
       
-      <div class="about-content">
+      <div class="grid md:grid-cols-2 gap-12">
         <div>
-          <p class="about-text">
+          <p class="text-lg mb-6">
             The ability to manipulate media is not new, but the landscape has changed dramatically in recent years. According to reports from multiple security agencies, the scale in use of media manipulation has dramatically increased as the complexity of leveraging manipulated media has fallen.
           </p>
-          <p class="about-text">
+          <p class="text-lg mb-6">
             Making sophisticated fakes previously could take professionals days to weeks, but now these fakes can be produced in a fraction of the time with limited or no technical expertise.
           </p>
         </div>
         
         <div>
-          <h4 class="harms-title">Real-World Harms</h4>
-          <ul class="harms-list">
-            <li class="harms-item">
-              <span class="harms-bullet">•</span>
+          <h4 class="text-2xl font-bold mb-4 text-[#FFB200]">Real-World Harms</h4>
+          <ul class="space-y-4">
+            <li class="flex items-start">
+              <span class="text-[#FFB200] mr-3">•</span>
               <span>Financial Fraud: Deepfake video call scams have resulted in millions of dollars in losses.</span>
             </li>
-            <li class="harms-item">
-              <span class="harms-bullet">•</span>
+            <li class="flex items-start">
+              <span class="text-[#FFB200] mr-3">•</span>
               <span>Market Manipulation: Fake images shared on social media have affected financial markets.</span>
             </li>
-            <li class="harms-item">
-              <span class="harms-bullet">•</span>
+            <li class="flex items-start">
+              <span class="text-[#FFB200] mr-3">•</span>
               <span>Political Disinformation: Deepfakes of political figures cause confusion and undermine trust.</span>
             </li>
           </ul>
         </div>
       </div>
     </div>
-  </section>
+  </div>
   
   <!-- How It Works Section -->
-  <section id="how-it-works" class="how-it-works">
-    <div class="max-w-5xl">
-      <h2 class="section-title-small">HOW IT WORKS</h2>
-      <h3 class="section-title">THE FOUR PILLARS OF TAS AUTHENTICATION</h3>
+      <div id="how-it-works" class="px-4 py-16 lg:px-16 lg:py-24 border-t border-gray-800">
+        <div class="max-w-5xl mx-auto">
+          <h2 class="text-[#FFB200] text-xl mb-2">HOW IT WORKS</h2>
+          <h3 class="text-4xl md:text-5xl font-bold mb-12">THE FOUR PILLARS OF TAS AUTHENTICATION</h3>
+          
+          <div class="grid md:grid-cols-2 gap-16">
+            <div class="relative">
+              <div class="w-full aspect-square bg-gray-800 rounded-lg flex items-center justify-center">
+                <div class="relative">
+                  <img class='h-full w-full object-cover' src='public/img/TAS Media (4).jpg'></img>
+                </div>
+              </div>
+            </div>
+            
+            <div>
+              <div class="space-y-8">
+                <div>
+                  <h4 class="text-xl font-bold mb-2">Identity (Who?)</h4>
+                  <p>Confirms the creator is who they claim to be with tiered verification.</p>
+                </div>
+                <div>
+                  <h4 class="text-xl font-bold mb-2">Content (What?)</h4>
+                  <p>Ties the verification to the specific content to prevent misuse.</p>
+                </div>
+                <div>
+                  <h4 class="text-xl font-bold mb-2">Location (Where?)</h4>
+                  <p>Verifies the geographic location where the content was created.</p>
+                </div>
+                <div>
+                  <h4 class="text-xl font-bold mb-2">Time (When?)</h4>
+                  <p>Confirms when the content was produced with secure timestamps.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       
-      <div class="how-it-works-content">
-        <div>
-          <div class="how-image-container">
-            <img class="how-image" src="public/img/TAS Media (4).jpg" alt="TAS authentication">
-          </div>
-        </div>
-        
-        <div class="pillars">
-          <div>
-            <h4 class="pillar-title">Identity (Who?)</h4>
-            <p>Confirms the creator is who they claim to be with tiered verification.</p>
-          </div>
-          <div>
-            <h4 class="pillar-title">Content (What?)</h4>
-            <p>Ties the verification to the specific content to prevent misuse.</p>
-          </div>
-          <div>
-            <h4 class="pillar-title">Location (Where?)</h4>
-            <p>Verifies the geographic location where the content was created.</p>
-          </div>
-          <div>
-            <h4 class="pillar-title">Time (When?)</h4>
-            <p>Confirms when the content was produced with secure timestamps.</p>
+      <!-- Technical Architecture -->
+      <div class="px-4 py-16 lg:px-16 lg:py-24 bg-gray-900">
+        <div class="max-w-5xl mx-auto">
+          <h2 class="text-[#FFB200] text-xl mb-2">TECHNICAL ARCHITECTURE</h2>
+          <h3 class="text-4xl md:text-5xl font-bold mb-12">SECURE BY DESIGN</h3>
+          
+          <div class="grid md:grid-cols-2 gap-16">
+            <div>
+              <h4 class="text-2xl font-bold mb-6">Cryptographic Security</h4>
+              <p class="text-lg mb-8">
+                TAS leverages robust RSA public-private key infrastructure to ensure only authorized users can create valid signatures.
+              </p>
+              
+              <h4 class="text-2xl font-bold mb-6">Dynamic Authentication</h4>
+              <p class="text-lg">
+                For videos, TAS signatures dynamically update every three seconds with new timestamps, making it virtually impossible for malicious actors to fake the authentication chain.
+              </p>
+            </div>
+            
+            <div class="flex flex-col space-y-6">
+              <div class="bg-gray-800 p-6 rounded-lg">
+                <h5 class="text-xl font-bold mb-3">For Images:</h5>
+                <p>A static TAS signature is embedded into the image. All four QR codes contain fixed information based on the moment of creation.</p>
+              </div>
+              
+              <div class="bg-[#FFB200] text-[#202127] p-6 rounded-lg">
+                <h5 class="text-xl font-bold mb-3">For Videos:</h5>
+                <p>The TAS signature dynamically updates every three seconds with a new timestamp. Each update changes all four QR codes, as the timestamp is included in the hash sum of every code.</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-  
-  <!-- Technical Architecture -->
-  <section class="tech">
-    <div class="max-w-5xl">
-      <h2 class="section-title-small">TECHNICAL ARCHITECTURE</h2>
-      <h3 class="section-title">SECURE BY DESIGN</h3>
       
-      <div class="tech-content">
-        <div>
-          <h4 class="tech-title">Cryptographic Security</h4>
-          <p class="tech-text">
-            TAS leverages robust RSA public-private key infrastructure to ensure only authorized users can create valid signatures.
-          </p>
+      <!-- Applications -->
+      <div id="applications" class="px-4 py-16 lg:px-16 lg:py-24 border-t border-gray-800">
+        <div class="max-w-5xl mx-auto">
+          <h2 class="text-[#FFB200] text-xl mb-2">APPLICATIONS</h2>
+          <h3 class="text-4xl md:text-5xl font-bold mb-12">WHERE TAS MAKES A DIFFERENCE</h3>
           
-          <h4 class="tech-title">Dynamic Authentication</h4>
-          <p class="tech-text">
-            For videos, TAS signatures dynamically update every three seconds with new timestamps, making it virtually impossible for malicious actors to fake the authentication chain.
-          </p>
-        </div>
-        
-        <div class="tech-cards">
-          <div class="tech-card">
-            <h5 class="tech-card-title">For Images:</h5>
-            <p>A static TAS signature is embedded into the image. All four QR codes contain fixed information based on the moment of creation.</p>
-          </div>
-          
-          <div class="tech-card tech-card-yellow">
-            <h5 class="tech-card-title">For Videos:</h5>
-            <p>The TAS signature dynamically updates every three seconds with a new timestamp. Each update changes all four QR codes, as the timestamp is included in the hash sum of every code.</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="bg-gray-800 p-6 rounded-lg hover:bg-gray-700 transition-colors">
+              <h4 class="text-xl font-bold mb-4">Content Creation</h4>
+              <p>Content creators can verify their identity and authenticate their media, building trust with their audience.</p>
+            </div>
+            
+            <div class="bg-gray-800 p-6 rounded-lg hover:bg-gray-700 transition-colors">
+              <h4 class="text-xl font-bold mb-4">Live Streaming</h4>
+              <p>TAS can be integrated into video conferencing and live streaming solutions to provide real-time authentication.</p>
+            </div>
+            
+            <div class="bg-gray-800 p-6 rounded-lg hover:bg-gray-700 transition-colors">
+              <h4 class="text-xl font-bold mb-4">News Media</h4>
+              <p>Journalists can authenticate media in the field, addressing the challenge of verifying breaking news content.</p>
+            </div>
+            
+            <div class="bg-gray-800 p-6 rounded-lg hover:bg-gray-700 transition-colors">
+              <h4 class="text-xl font-bold mb-4">High-Risk Individuals</h4>
+              <p>Celebrities, influencers, and political leaders vulnerable to deepfake impersonation can prove authenticity.</p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-  
-  <!-- Applications -->
-  <section id="applications" class="applications">
-    <div class="max-w-5xl">
-      <h2 class="section-title-small">APPLICATIONS</h2>
-      <h3 class="section-title">WHERE TAS MAKES A DIFFERENCE</h3>
       
-      <div class="app-grid">
-        <div class="app-card">
-          <h4 class="app-title">Content Creation</h4>
-          <p>Content creators can verify their identity and authenticate their media, building trust with their audience.</p>
-        </div>
-        
-        <div class="app-card">
-          <h4 class="app-title">Live Streaming</h4>
-          <p>TAS can be integrated into video conferencing and live streaming solutions to provide real-time authentication.</p>
-        </div>
-        
-        <div class="app-card">
-          <h4 class="app-title">News Media</h4>
-          <p>Journalists can authenticate media in the field, addressing the challenge of verifying breaking news content.</p>
-        </div>
-        
-        <div class="app-card">
-          <h4 class="app-title">High-Risk Individuals</h4>
-          <p>Celebrities, influencers, and political leaders vulnerable to deepfake impersonation can prove authenticity.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-  
-  <!-- Differentiating Value -->
-  <section class="why-tas">
-    <div class="why-tas-overlay">
-      <div class="max-w-5xl">
-        <h2 class="section-title-small">WHY TAS</h2>
-        <h3 class="section-title">DIFFERENTIATING VALUE</h3>
-        
-        <div class="diff-grid">
-          <div class="diff-card">
-            <h4 class="diff-title">Visibility</h4>
-            <p>Unlike metadata-based solutions that require special software to detect, TAS authentication is immediately visible to all viewers.</p>
+      <!-- Differentiating Value -->
+      <div class="diff-value">
+        <div class='py-16 lg:px-16 lg:py-24 bg-linear-to-r from-gray-900 from-30%'>
+        <div class="max-w-5xl mx-auto">
+          <h2 class="text-[#FFB200] text-xl mb-2">WHY TAS</h2>
+          <h3 class="text-4xl md:text-5xl font-bold mb-12">DIFFERENTIATING VALUE</h3>
+          
+          <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-[#202127] p-6 rounded-lg border border-[#FFB200]">
+              <h4 class="text-xl font-bold mb-4 text-[#FFB200]">Visibility</h4>
+              <p>Unlike metadata-based solutions that require special software to detect, TAS authentication is immediately visible to all viewers.</p>
+            </div>
+            
+            <div class="bg-[#202127] p-6 rounded-lg border border-[#FFB200]">
+              <h4 class="text-xl font-bold mb-4 text-[#FFB200]">Portability</h4>
+              <p>TAS can be applied to content shared on any platform, regardless of whether that platform has implemented specific content authentication standards.</p>
+            </div>
+            
+            <div class="bg-[#202127] p-6 rounded-lg border border-[#FFB200]">
+              <h4 class="text-xl font-bold mb-4 text-[#FFB200]">User Empowerment</h4>
+              <p>TAS gives individual creators the tools to authenticate their content and build trust with their audience directly.</p>
+            </div>
           </div>
           
-          <div class="diff-card">
-            <h4 class="diff-title">Portability</h4>
-            <p>TAS can be applied to content shared on any platform, regardless of whether that platform has implemented specific content authentication standards.</p>
-          </div>
-          
-          <div class="diff-card">
-            <h4 class="diff-title">User Empowerment</h4>
-            <p>TAS gives individual creators the tools to authenticate their content and build trust with their audience directly.</p>
+          <div class="mt-12 text-center">
+            <h3 class="text-2xl font-bold mb-6">Ready to restore trust in your digital content?</h3>
+            <button class="bg-[#FFB200] text-[#202127] px-8 py-4 rounded-full font-bold hover:bg-opacity-90 transition-colors">
+              GET STARTED WITH TAS
+            </button>
           </div>
         </div>
-        
-        <div class="cta">
-          <h3 class="cta-title">Ready to restore trust in your digital content?</h3>
-          <button class="btn btn-primary">
-            GET STARTED WITH TAS
-          </button>
         </div>
       </div>
-    </div>
-  </section>
   
   <!-- Footer -->
   <footer>
