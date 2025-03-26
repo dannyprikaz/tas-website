@@ -6,6 +6,7 @@
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
+    --color-gray-400: oklch(0.707 0.022 261.325);
     --color-gray-700: oklch(0.373 0.034 259.733);
     --color-gray-800: oklch(0.278 0.033 256.848);
     --color-gray-900: oklch(0.21 0.034 264.665);
@@ -184,6 +185,9 @@
   .visible {
     visibility: visible;
   }
+  .absolute {
+    position: absolute;
+  }
   .fixed {
     position: fixed;
   }
@@ -208,6 +212,9 @@
   .z-10 {
     z-index: 10;
   }
+  .z-20 {
+    z-index: 20;
+  }
   .m-2 {
     margin: calc(var(--spacing) * 2);
   }
@@ -216,6 +223,9 @@
   }
   .mx-auto {
     margin-inline: auto;
+  }
+  .mt-4 {
+    margin-top: calc(var(--spacing) * 4);
   }
   .mt-12 {
     margin-top: calc(var(--spacing) * 12);
@@ -268,6 +278,9 @@
   .h-60 {
     height: calc(var(--spacing) * 60);
   }
+  .h-\[25vw\] {
+    height: 25vw;
+  }
   .h-full {
     height: 100%;
   }
@@ -292,6 +305,9 @@
   .w-60 {
     width: calc(var(--spacing) * 60);
   }
+  .w-\[25vw\] {
+    width: 25vw;
+  }
   .w-full {
     width: 100%;
   }
@@ -312,6 +328,9 @@
   }
   .grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
   .flex-col {
     flex-direction: column;
@@ -374,6 +393,9 @@
       margin-inline-end: calc(calc(var(--spacing) * 8) * calc(1 - var(--tw-space-x-reverse)));
     }
   }
+  .overflow-hidden {
+    overflow: hidden;
+  }
   .scroll-smooth {
     scroll-behavior: smooth;
   }
@@ -419,6 +441,9 @@
   }
   .bg-\[\#FFB200\] {
     background-color: #FFB200;
+  }
+  .bg-gray-700 {
+    background-color: var(--color-gray-700);
   }
   .bg-gray-800 {
     background-color: var(--color-gray-800);
@@ -472,6 +497,9 @@
   .px-8 {
     padding-inline: calc(var(--spacing) * 8);
   }
+  .px-16 {
+    padding-inline: calc(var(--spacing) * 16);
+  }
   .py-2 {
     padding-block: calc(var(--spacing) * 2);
   }
@@ -480,6 +508,9 @@
   }
   .py-6 {
     padding-block: calc(var(--spacing) * 6);
+  }
+  .py-8 {
+    padding-block: calc(var(--spacing) * 8);
   }
   .py-16 {
     padding-block: calc(var(--spacing) * 16);
@@ -534,6 +565,9 @@
   }
   .text-\[\#FFB200\] {
     color: #FFB200;
+  }
+  .text-gray-400 {
+    color: var(--color-gray-400);
   }
   .text-gray-700 {
     color: var(--color-gray-700);
@@ -783,6 +817,30 @@
   .mobile-menu-button {
     display: none;
   }
+}
+.danny-scanned {
+  display: none;
+}
+.danny-scanned.active {
+  display: block;
+}
+.ryan-scanned {
+  display: none;
+}
+.ryan-scanned.active {
+  display: block;
+}
+.jens-scanned {
+  display: none;
+}
+.jens-scanned.active {
+  display: block;
+}
+.tj-scanned {
+  display: none;
+}
+.tj-scanned.active {
+  display: block;
 }
 .mobile-menu {
   display: none;

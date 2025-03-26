@@ -122,6 +122,38 @@
 }
 }
 
+.danny-scanned {
+  display: none;
+}
+
+.danny-scanned.active {
+  display: block;
+}
+
+.ryan-scanned {
+  display: none;
+}
+
+.ryan-scanned.active {
+  display: block;
+}
+
+.jens-scanned {
+  display: none;
+}
+
+.jens-scanned.active {
+  display: block;
+}
+
+.tj-scanned {
+  display: none;
+}
+
+.tj-scanned.active {
+  display: block;
+}
+
 .mobile-menu {
 display: none;
 }
