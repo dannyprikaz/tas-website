@@ -252,6 +252,13 @@
     </footer>
 
     <script>
+        const codeMap = {
+            '668E2B73AC556A2F051304702DA290160B29BAD3392DDCC72074FEFBEE80C55A': 'danny',
+            'FF38D2567B8123D1144A15EA77D969F1E742A8BDCD7F31C48A7CFDF4C4037663': 'jens',
+            '29CCC85D812C2004E2557D4AAA2B973AAAD57EAB11FF7C9819185E60FA3FB4F3': 'tj',
+            'E0E3A2B6471D044A53A7757994B51DD33C6B3EC90E1ACA21CEBC8E2AE79D6D9B': 'ryan'
+        }
+        
         function toggleMenu() {
           const mobileMenu = document.getElementById('mobile-menu');
           mobileMenu.classList.toggle('open');
@@ -269,36 +276,32 @@
         }
 
         // Function to save and retrieve visited code queries
-        function manageVisitedQueries(currentQuery) {
+        function manageVisitedCodes(currentQuery) {
             // Get existing visited queries from localStorage
-            let visitedQueries = JSON.parse(localStorage.getItem('visitedCodeQueries') || '[]');
+            let visitedCodes = JSON.parse(localStorage.getItem('visitedCodes') || '[]');
             let lastSuccess = localStorage.getItem('lastSuccess') || 0;
-            console.log(lastSuccess);
             
             // Check if current query is a valid code query
             const validCodes = ['danny', 'tj', 'jens', 'ryan'];
-            const currentCode = currentQuery.split('=')[1];
+            const currentCode = codeMap[currentQuery.split('=')[1]];
             const currentTime = new Date();
-            console.log(currentTime.getTime());
 
             if (currentQuery && validCodes.includes(currentCode)) {
                 // Add to visited queries if not already present
-                if (!visitedQueries.includes(currentQuery)) {
+                if (!visitedCodes.includes(currentCode)) {
                     if (currentTime.getTime() - lastSuccess < 3600000) {
                         displayTimeWarning();
-                        return visitedQueries;
+                        return visitedCodes;
                     }
-                    visitedQueries.push(currentQuery);
+                    visitedCodes.push(currentCode);
                     localStorage.setItem('lastSuccess', currentTime.getTime());
                 }
             }
             
             // Save back to localStorage
-            localStorage.setItem('visitedCodeQueries', JSON.stringify(visitedQueries));
+            localStorage.setItem('visitedCodes', JSON.stringify(visitedCodes));
 
-            console.log(visitedQueries);
-
-            return visitedQueries;
+            return visitedCodes;
         }
 
         // Function to show the correct images based on query strings
@@ -313,15 +316,11 @@
             const currentQueryString = window.location.search.substring(1) || 'No query string';
 
             // Manage and retrieve visited queries
-            const visitedQueries = manageVisitedQueries(currentQueryString);
+            const visitedCodes = manageVisitedCodes(currentQueryString);
 
             // Show images for current and previous queries
-            visitedQueries.forEach(queryString => {
-                const params = new URLSearchParams(queryString);
-                const code = params.get('code');
-
+            visitedCodes.forEach(code => {
                 if (code) {
-                    console.log(code);
                     // Show image for this code
                     const imageContainer = document.getElementById(`${code}-scanned`);
                     if (imageContainer) {
