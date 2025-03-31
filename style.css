@@ -348,6 +348,9 @@
   .resize-none {
     resize: none;
   }
+  .list-disc {
+    list-style-type: disc;
+  }
   .appearance-none {
     appearance: none;
   }
