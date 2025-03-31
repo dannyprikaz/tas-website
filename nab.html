@@ -14,22 +14,45 @@
   <!-- Navigation -->
   <nav class="fixed inset-x-0 top-0 z-50 border-b border-gray-950/5 dark:border-white/10 bg-inherit">
     <div class="px-4 py-6 flex justify-between sticky items-center lg:px-16">
+      <div class="flex items-center">
+        <div class="mr-2 w-10 h-10 relative">
+          <a href="/">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="w-full h-full">
+              <g stroke="white" stroke-width="0.8" fill="none" stroke-linejoin="round" stroke-linecap="square">
+              <path d="m 19,14 v 5 h -5"></path>
+              <path d="m 14,1 h 5 v 5"></path>
+              <path d="M 1,6 V 1 h 5"></path>
+              <path d="m 6.00004,19 h -5 v -5"></path>
+              <path d="m 10,4.5 v 11 M 6,4.5 h 8 M 11.5,17 H 8 V 7.5673435 M 7,6.5 H 4 v -2 M 4,3 h 12 v 3.5 h -4 v 9"></path>
+              </g>
+            </svg>
+          </a>
+        </div>
         <a href="/">
-            <div class="flex items-center">
-                <div class="mr-2 w-10 h-10 relative">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="w-full h-full">
-                    <g stroke="white" stroke-width="0.8" fill="none" stroke-linejoin="round" stroke-linecap="square">
-                    <path d="m 19,14 v 5 h -5"></path>
-                    <path d="m 14,1 h 5 v 5"></path>
-                    <path d="M 1,6 V 1 h 5"></path>
-                    <path d="m 6.00004,19 h -5 v -5"></path>
-                    <path d="m 10,4.5 v 11 M 6,4.5 h 8 M 11.5,17 H 8 V 7.5673435 M 7,6.5 H 4 v -2 M 4,3 h 12 v 3.5 h -4 v 9"></path>
-                    </g>
-                </svg>
-                </div>
-                <h1 class="text-2xl font-bold">TAS</h1>
-            </div>
+          <h1 class="text-2xl font-bold">TAS</h1>
         </a>
+      </div>
+      
+      <div class="hidden md:flex space-x-8">
+        <a href="/" class="hover:text-[#FFB200] transition-colors">HOME</a>
+      </div>
+      
+      <div class="fixed right-5">
+        <button class="md:hidden" onclick="toggleMenu()">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+    
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu border-b border-gray-950/5 dark:border-white/10">
+      <div class="md:hidden bg-[#202127] p-4">
+        <div class="flex flex-col space-y-4">
+          <a href="/" class="hover:text-[#FFB200] transition-colors">HOME</a>
+        </div>
+      </div>
     </div>
   </nav>
 
@@ -229,6 +252,11 @@
     </footer>
 
     <script>
+        function toggleMenu() {
+          const mobileMenu = document.getElementById('mobile-menu');
+          mobileMenu.classList.toggle('open');
+        }
+
         // Function to parse query string
         function getQueryParams() {
             const params = new URLSearchParams(window.location.search);
