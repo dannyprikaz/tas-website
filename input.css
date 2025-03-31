@@ -154,6 +154,14 @@
   display: block;
 }
 
+.warning {
+  display: none;
+}
+
+.warning.active {
+  display: block;
+}
+
 .mobile-menu {
 display: none;
 }

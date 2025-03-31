@@ -44,6 +44,7 @@
         <p class="text-xl md:text-2xl mb-12 max-w-2xl">
             While you're here, check out <a href="/" class="underline">our homepage</a> to learn more.
         </p>
+        <h4 id="time-warning" class="text-[#FFB200] text-2xl mb-2 warning">Only one new scan per hour.</h4>
       
         <div class="flex">
             <div class="bg-[#202127] p-[1vw] rounded-lg border border-[#FFB200] grow aspect-square">
@@ -194,7 +195,7 @@
                     <h4 class="text-xl font-semibold mb-2 text-[#FFB200]">Ryan Allen</h4>
                 </a>
                 <p class="text-lg">Director of Business Development</p>
-                <p class="mt-4">Cybersecurity veteran with deep expertise in digital authentication.</p>
+                <p class="mt-4">Ryan has spent over 10 years helping organizations across media, telecom, e-commerce, and cybersecurity sectors design and implement innovative solutions. Specializing in driving digital transformation, he has successfully led projects that streamline operations, enhance security, and deliver measurable growth.</p>
             </div>
         </div>
         </div>
@@ -226,19 +227,33 @@
             return Object.fromEntries(params.entries());
         }
 
+        function displayTimeWarning() {
+            const timeWarning = document.getElementById(`time-warning`);
+            timeWarning.classList.add('active');
+        }
+
         // Function to save and retrieve visited code queries
         function manageVisitedQueries(currentQuery) {
             // Get existing visited queries from localStorage
             let visitedQueries = JSON.parse(localStorage.getItem('visitedCodeQueries') || '[]');
+            let lastSuccess = localStorage.getItem('lastSuccess') || 0;
+            console.log(lastSuccess);
             
             // Check if current query is a valid code query
             const validCodes = ['danny', 'tj', 'jens', 'ryan'];
             const currentCode = currentQuery.split('=')[1];
+            const currentTime = new Date();
+            console.log(currentTime.getTime());
 
             if (currentQuery && validCodes.includes(currentCode)) {
                 // Add to visited queries if not already present
                 if (!visitedQueries.includes(currentQuery)) {
+                    if (currentTime.getTime() - lastSuccess < 3600000) {
+                        displayTimeWarning();
+                        return visitedQueries;
+                    }
                     visitedQueries.push(currentQuery);
+                    localStorage.setItem('lastSuccess', currentTime.getTime());
                 }
             }
             
@@ -284,4 +299,4 @@
         window.onload = showImagesForQueries;
     </script>
 </body>
-</html>
+</html> 
