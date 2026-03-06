@@ -389,3 +389,56 @@ border-top: 1px solid #333;
 color: #999;
 font-size: 0.875rem;
 }
+
+/* Section eyebrow — gold bar before label */
+.section-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 2px;
+  background: #e3b931;
+  margin-right: 10px;
+  vertical-align: middle;
+  margin-bottom: 3px;
+}
+
+/* Large animated stat numbers */
+.stat-number {
+  font-family: 'Kanit', sans-serif;
+  font-size: 4.5rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #e3b931;
+}
+
+/* Large muted step numbers */
+.step-number {
+  font-family: 'Kanit', sans-serif;
+  font-size: 5rem;
+  font-weight: 700;
+  line-height: 1;
+  color: rgba(227, 185, 49, 0.15);
+  letter-spacing: -2px;
+}
+
+/* Card hover gold glow */
+.card-glow {
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.card-glow:hover {
+  box-shadow: 0 0 32px rgba(227, 185, 49, 0.12), 0 8px 32px rgba(0, 0, 0, 0.35);
+  transform: translateY(-2px);
+}
+
+/* Float animation for phone mockup images */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-14px); }
+}
+.float-anim {
+  animation: float 5s ease-in-out infinite;
+}
+.float-anim-delayed {
+  animation: float 5s ease-in-out infinite;
+  animation-delay: 1.8s;
+}
