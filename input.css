@@ -114,6 +114,16 @@
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --breakpoint-lg: 1300px;
   --breakpoint-sm: 575.6px;
+
+  /* Design system color tokens (from tas/mobile/design/colors.ts) */
+  --color-brand-primary: #e3b931;
+  --color-brand-secondary: #f89a38;
+  --color-bg-dark: #071f2c;
+  --color-bg-light: #f8faf9;
+  --color-surface-dark: #1d6476;
+  --color-surface-light: #e7f1ed;
+  --color-text-inverse: #fcfdfd;
+  --color-text-muted: #6c7881;
 }
 
 
@@ -178,6 +188,170 @@ background-position: bottom;
 background-repeat: no-repeat;
 background-attachment: fixed;
 padding: 0;
+}
+
+/* TAS Signature Mockup */
+.tas-sig {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  gap: 0;
+  justify-items: center;
+}
+
+.tas-sig-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.tas-sig-cell--center {
+  grid-column: 2;
+}
+
+.tas-sig-canvas {
+  width: 100px;
+  height: 100px;
+  border-radius: 0;
+  border: 1px solid rgba(7, 31, 44, 0.25);
+  cursor: crosshair;
+  transition: box-shadow 0.2s ease, opacity 0.2s ease;
+  background: #e3b931;
+  display: block;
+}
+
+.tas-sig-canvas:hover {
+  box-shadow: 0 0 22px rgba(227, 185, 49, 0.7), 0 0 50px rgba(227, 185, 49, 0.25);
+  z-index: 1;
+  position: relative;
+}
+
+.tas-sig-canvas.updating {
+  opacity: 0.3;
+}
+
+.tas-sig-label {
+  font-family: 'Kanit', sans-serif;
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: rgba(227, 185, 49, 0.6);
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.tas-sig-footer {
+  grid-column: 1 / -1;
+  text-align: center;
+  font-family: 'Kanit', sans-serif;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  color: rgba(252, 253, 253, 0.25);
+  margin-top: 8px;
+}
+
+/* Signature hover tooltip */
+.tas-sig-tooltip {
+  position: absolute;
+  pointer-events: none;
+  background: rgba(7, 31, 44, 0.97);
+  border: 1px solid rgba(227, 185, 49, 0.45);
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-family: 'Kanit', sans-serif;
+  font-size: 13px;
+  color: #fcfdfd;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  z-index: 20;
+  transform: translateX(-50%);
+}
+
+.tas-sig-tooltip.visible {
+  opacity: 1;
+}
+
+.tas-sig-tooltip-label {
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: rgba(227, 185, 49, 0.7);
+  text-transform: uppercase;
+  margin-bottom: 3px;
+}
+
+/* Scroll reveal — cards fade in and float up */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* About section — animated background frames */
+.about-bg-layer {
+  display: none;
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@media (min-width: 768px) {
+  .about-bg-layer {
+    display: block;
+  }
+}
+
+.about-bg-frame {
+  position: absolute;
+  object-fit: cover;
+  border: 1px solid rgba(227, 185, 49, 0.35);
+  border-radius: 4px;
+  opacity: 0;
+  will-change: transform, opacity;
+  overflow: hidden;
+  box-shadow: 0 0 28px rgba(0, 0, 0, 0.5), 0 0 12px rgba(227, 185, 49, 0.1);
+}
+
+/* Scan-line texture */
+.about-bg-frame::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(0, 0, 0, 0.06) 3px,
+    rgba(0, 0, 0, 0.06) 4px
+  );
+}
+
+/* Subtle gold tint in corner */
+.about-bg-frame::after {
+  content: 'SYNTHETIC MEDIA';
+  position: absolute;
+  bottom: 8px;
+  left: 10px;
+  font-family: 'Kanit', sans-serif;
+  font-size: 7px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  color: rgba(227, 185, 49, 0.3);
+}
+
+/* Radial vignette so centre text stays legible */
+.about-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(7,31,44,0.15) 30%, rgba(7,31,44,0.55) 100%);
+  pointer-events: none;
+  z-index: 1;
 }
 
 /* Footer */
