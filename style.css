@@ -255,6 +255,9 @@
   .mx-auto {
     margin-inline: auto;
   }
+  .mt-3 {
+    margin-top: calc(var(--spacing) * 3);
+  }
   .mt-4 {
     margin-top: calc(var(--spacing) * 4);
   }
@@ -263,9 +266,6 @@
   }
   .mr-2 {
     margin-right: calc(var(--spacing) * 2);
-  }
-  .mr-3 {
-    margin-right: calc(var(--spacing) * 3);
   }
   .mb-2 {
     margin-bottom: calc(var(--spacing) * 2);
@@ -287,6 +287,9 @@
   }
   .mb-12 {
     margin-bottom: calc(var(--spacing) * 12);
+  }
+  .mb-14 {
+    margin-bottom: calc(var(--spacing) * 14);
   }
   .flex {
     display: flex;
@@ -372,6 +375,9 @@
   .grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+  .grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
   .flex-col {
     flex-direction: column;
   }
@@ -380,9 +386,6 @@
   }
   .items-center {
     align-items: center;
-  }
-  .items-start {
-    align-items: flex-start;
   }
   .justify-between {
     justify-content: space-between;
@@ -742,6 +745,11 @@
   .lg\:grid-cols-2 {
     @media (width >= 1300px) {
       grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  .lg\:grid-cols-3 {
+    @media (width >= 1300px) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
     }
   }
   .lg\:grid-cols-4 {
@@ -1131,6 +1139,53 @@ footer {
   border-top: 1px solid #333;
   color: #999;
   font-size: 0.875rem;
+}
+.section-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 2px;
+  background: #e3b931;
+  margin-right: 10px;
+  vertical-align: middle;
+  margin-bottom: 3px;
+}
+.stat-number {
+  font-family: 'Kanit', sans-serif;
+  font-size: 4.5rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #e3b931;
+}
+.step-number {
+  font-family: 'Kanit', sans-serif;
+  font-size: 5rem;
+  font-weight: 700;
+  line-height: 1;
+  color: rgba(227, 185, 49, 0.15);
+  letter-spacing: -2px;
+}
+.card-glow {
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.card-glow:hover {
+  box-shadow: 0 0 32px rgba(227, 185, 49, 0.12), 0 8px 32px rgba(0, 0, 0, 0.35);
+  transform: translateY(-2px);
+}
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+.float-anim {
+  animation: float 5s ease-in-out infinite;
+}
+.float-anim-delayed {
+  animation: float 5s ease-in-out infinite;
+  animation-delay: 1.8s;
 }
 @property --tw-rotate-x {
   syntax: "*";
