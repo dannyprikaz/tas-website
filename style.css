@@ -697,6 +697,13 @@
       }
     }
   }
+  .hover\:underline {
+    &:hover {
+      @media (hover: hover) {
+        text-decoration-line: underline;
+      }
+    }
+  }
   .lg\:h-160 {
     @media (width >= 1300px) {
       height: calc(var(--spacing) * 160);
