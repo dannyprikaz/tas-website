@@ -161,7 +161,7 @@
             <div class="scroll-reveal" data-delay="0">
               <div class="step-number">01</div>
               <h5 class="text-lg font-semibold mt-3 mb-2 text-brand-primary">Record</h5>
-              <p>Open the TAS app and capture. The signature embeds in real-time as you record.</p>
+              <p>Open the TAS app and capture. A signed QR code embeds into your video in real-time as you record.</p>
             </div>
             <div class="scroll-reveal" data-delay="120">
               <div class="step-number">02</div>
@@ -171,7 +171,7 @@
             <div class="scroll-reveal" data-delay="240">
               <div class="step-number">03</div>
               <h5 class="text-lg font-semibold mt-3 mb-2 text-brand-primary">Scan</h5>
-              <p>Anyone verifies instantly with their phone camera, from a screenshot or screen share.</p>
+              <p>Anyone verifies instantly with their phone camera or from a saved screenshot — no app required. The result opens right in their browser.</p>
             </div>
           </div>
           
@@ -180,27 +180,9 @@
               <div class="bg-bg-dark rounded-lg flex flex-col items-center justify-center p-8 gap-4">
                 <p class="text-text-inverse text-sm tracking-widest uppercase">Live TAS Signature</p>
 
-                <!-- T-formation signature grid -->
-                <div class="tas-sig" id="tas-signature">
-                  <!-- Top bar: Aztec · QR · Aztec -->
-                  <div class="tas-sig-cell">
-                    <span class="tas-sig-label">Identity</span>
-                    <canvas id="sig-aztec-1" class="tas-sig-canvas"></canvas>
-                  </div>
-                  <div class="tas-sig-cell">
-                    <span class="tas-sig-label">Content</span>
-                    <canvas id="sig-qr" class="tas-sig-canvas"></canvas>
-                  </div>
-                  <div class="tas-sig-cell">
-                    <span class="tas-sig-label">Location</span>
-                    <canvas id="sig-aztec-2" class="tas-sig-canvas"></canvas>
-                  </div>
-                  <!-- Stem: Aztec centred below QR -->
-                  <div class="tas-sig-cell tas-sig-cell--center">
-                    <canvas id="sig-aztec-3" class="tas-sig-canvas"></canvas>
-                    <span class="tas-sig-label">Timestamp</span>
-                  </div>
-                  <!-- Footer countdown -->
+                <!-- Single QR signature -->
+                <div class="flex flex-col items-center gap-3" id="tas-signature">
+                  <canvas id="sig-qr" class="tas-sig-canvas"></canvas>
                   <div class="tas-sig-footer" id="sig-timer">— updating in 3s —</div>
                 </div>
 
@@ -209,26 +191,37 @@
                   <div class="tas-sig-tooltip-label" id="sig-tooltip-label"></div>
                   <div id="sig-tooltip-value"></div>
                 </div>
+
+              </div>
+
+              <!-- Content fingerprinting blurb -->
+              <div class="mt-10">
+                <h5 class="text-base font-semibold tracking-widest uppercase text-brand-primary mb-3">Content Fingerprinting</h5>
+                <p class="text-base text-white">After publishing on Bluesky or X, creators can link their post in the TAS app. TAS compares the published media against a fingerprint taken at the moment of recording. If it matches, what you're seeing online is exactly what came out of the camera. If it doesn't match, we don't verify it.</p>
               </div>
             </div>
             
             <div>
               <div class="space-y-8">
                 <div>
+                  <h4 class="text-xl font-semibold mb-2">One QR Code. Four Proofs.</h4>
+                  <p>A single scannable QR code is embedded in the video, updating every three seconds. Each code encodes a URL that links to a permanent record containing everything a verifier needs.</p>
+                </div>
+                <div>
                   <h4 class="text-xl font-semibold mb-2">Identity — Who?</h4>
-                  <p>The creator's identity is verified and signed — only the account holder can generate a valid signature.</p>
+                  <p>The creator's certificate ID is embedded in every signature — only the account holder can generate a valid one.</p>
                 </div>
                 <div>
                   <h4 class="text-xl font-semibold mb-2">Content — What?</h4>
-                  <p>A unique Content ID links back to the original — so the signature can't be cut and pasted onto something else.</p>
+                  <p>A unique Content ID links to the original record — so the signature can't be lifted and pasted onto something else.</p>
                 </div>
                 <div>
                   <h4 class="text-xl font-semibold mb-2">Location — Where?</h4>
-                  <p>Geographic location at whatever precision the creator chooses — from city-level to exact coordinates.</p>
+                  <p>Geographic location at whatever precision the creator chooses — city-level by default, more precise if they opt in.</p>
                 </div>
                 <div>
                   <h4 class="text-xl font-semibold mb-2">Timestamp — When?</h4>
-                  <p>A cryptographically signed timestamp confirms exactly when the content was produced. For video, the signature updates every three seconds.</p>
+                  <p>A cryptographically signed timestamp confirms exactly when the content was produced.</p>
                 </div>
               </div>
             </div>
@@ -258,12 +251,12 @@
             <div class="flex flex-col space-y-6">
               <div class="card-glow scroll-reveal bg-linear-to-b from-surface-dark to-bg-dark p-6 rounded-lg" data-delay="0">
                 <h5 class="text-xl font-semibold mb-3">For Images:</h5>
-                <p>A static TAS signature is embedded at the moment of creation. All four codes contain fixed, cryptographically signed information about that exact moment.</p>
+                <p>A static TAS signature is embedded at the moment of creation — a single QR code containing cryptographically signed proof of who, when, and where.</p>
               </div>
 
               <div class="scroll-reveal bg-brand-primary text-bg-dark p-6 rounded-lg" data-delay="150">
                 <h5 class="text-xl font-semibold mb-3">For Videos:</h5>
-                <p>The TAS signature updates every three seconds — like an authenticator app. Each cycle rotates all four codes, creating an authentication chain that's exponentially harder to forge.</p>
+                <p>The TAS signature updates every three seconds — like an authenticator app. Each new code is cryptographically unique to that moment, creating an authentication chain that's exponentially harder to forge.</p>
               </div>
             </div>
           </div>
@@ -351,11 +344,11 @@
 
             <div class="flex flex-wrap grid-cols-2 gap-2 justify-center">
               <div class="float-anim rounded-lg flex flex-shrink items-center justify-center">
-                <img class="max-h-120 max-w-50% flex-shrink" src="public/img/TAS Media Tall (1).png">
+                <img class="max-h-120 max-w-50% flex-shrink" src="public/img/verification.png">
               </div>
 
               <div class="float-anim-delayed rounded-lg flex flex-shrink items-center justify-center">
-                <img class="max-h-120 max-w-50% flex-shrink" src="public/img/TAS Media Tall.png">
+                <img class="max-h-120 max-w-50% flex-shrink" src="public/img/profile.png">
               </div>
             </div>
           </div>
@@ -366,7 +359,7 @@
       <div id="contact-us" class="py-16 lg:px-16 lg:py-24 bg-bg-dark">
         <div class="max-w-5xl mx-auto p-8">
           <h2 class="section-eyebrow text-brand-primary text-xl mb-2">CONTACT US</h2>
-          <h3 class="text-4xl md:text-5xl font-bold mb-12">JOIN THE CLOSED BETA</h3>
+          <h3 class="text-4xl md:text-5xl font-bold mb-12">REQUEST BETA ACCESS</h3>
           <div class="flex-wrap justify-center bg-white p-6 rounded-lg border border-brand-primary">
             <script src="https://js-na2.hsforms.net/forms/embed/245494627.js" defer></script>
             <div class="hs-form-frame" data-region="na2" data-form-id="0fd30e9f-32dc-430a-9595-aa3b54b43c87" data-portal-id="245494627"></div>
@@ -454,7 +447,7 @@
       tick();
     })();
 
-    // TAS Signature Mockup — real Aztec + QR codes via bwip-js, update every 3s
+    // TAS Signature Mockup — single QR code via bwip-js, updates every 3s
     (function () {
       var script = document.createElement('script');
       script.src = 'https://cdn.jsdelivr.net/npm/bwip-js@4/dist/bwip-js-min.js';
@@ -463,108 +456,108 @@
 
       var countdown = 3;
       var timer = document.getElementById('sig-timer');
+      var CONTENT_ID = randAlphaNum(20);
+      var frameNumber = 0;
 
-      function randHex(n) {
+      function randAlphaNum(n) {
+        var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
         var s = '';
-        while (s.length < n) s += Math.random().toString(16).slice(2);
-        return s.slice(0, n).toUpperCase();
+        for (var i = 0; i < n; i++) s += chars[Math.floor(Math.random() * chars.length)];
+        return s;
       }
 
-      function render(id, bcid, text) {
+      function currentUrl() {
+        return 'CONTENT.SCAN-TAS.COM/' + CONTENT_ID + '/' + frameNumber;
+      }
+
+      // TAS logo path (viewBox 0 0 20 20) — same path used by the native iOS module
+      var TAS_PATH = new Path2D("m 1.5117188,0.75585938 c -0.02544,-1e-8 -0.050863,0.001306 -0.076172,0.003906 -0.024919,0.00272 -0.049689,0.006619 -0.074219,0.0117188 -0.024363,0.00467 -0.04848,0.0105781 -0.072266,0.0175781 -0.024539,0.00787 -0.048659,0.0170037 -0.072266,0.0273438 -0.02329,0.00928 -0.046105,0.01971 -0.068359,0.03125 -0.021497,0.01263 -0.042356,0.0263156 -0.0625,0.0410156 -0.020917,0.01396 -0.041124,0.0289519 -0.060547,0.0449219 -0.019721,0.01597 -0.0386246,0.0329112 -0.0566406,0.0507813 -0.0172005,0.01806 -0.0334965,0.0369706 -0.0488281,0.0566406 -0.0160256,0.02006 -0.031019,0.04092 -0.0449219,0.0625 -0.0134198,0.02086 -0.0258046,0.042373 -0.0371094,0.064453 -0.0116035,0.02289 -0.022034,0.046363 -0.03125,0.070312 -0.009019,0.02368 -0.0168415,0.047796 -0.0234375,0.072266 -0.006384,0.02382 -0.011599,0.047936 -0.015625,0.072266 -0.004544,0.02521 -0.007803,0.050632 -0.009766,0.076172 -0.001264,0.01755 -0.001916,0.035144 -0.001953,0.052734 V 2.2675781 6.8027344 H 2.2675781 V 2.2675781 H 6.8027344 V 0.75585938 H 2.2675781 Z m 12.0937502,0 V 2.2675781 h 4.537109 v 4.5351563 h 1.511719 V 2.2675781 1.5117188 c -3.7e-5,-0.01759 -6.42e-4,-0.035184 -0.002,-0.052734 -0.002,-0.02554 -0.0052,-0.050962 -0.0098,-0.076172 -0.004,-0.02433 -0.0092,-0.048446 -0.01563,-0.072266 -0.0066,-0.02447 -0.01442,-0.048586 -0.02344,-0.072266 -0.0092,-0.02395 -0.01965,-0.047422 -0.03125,-0.070312 -0.01131,-0.02208 -0.02369,-0.043593 -0.03711,-0.064453 -0.0139,-0.02158 -0.0289,-0.04244 -0.04492,-0.0625 -0.01533,-0.01967 -0.03163,-0.038581 -0.04883,-0.0566406 -0.01802,-0.01787 -0.03692,-0.0348112 -0.05664,-0.0507813 -0.01942,-0.01597 -0.03963,-0.0309619 -0.06055,-0.0449219 -0.02014,-0.0147 -0.041,-0.0283856 -0.0625,-0.0410156 -0.02225,-0.01154 -0.04507,-0.02197 -0.06836,-0.03125 -0.02361,-0.01034 -0.04772,-0.0194737 -0.07227,-0.0273438 -0.02379,-0.007 -0.0479,-0.0129081 -0.07227,-0.0175781 -0.02453,-0.0051 -0.0493,-0.008999 -0.07422,-0.0117188 -0.02531,-0.0026 -0.05073,-0.003906 -0.07617,-0.003906 h -0.75586 z M 3.7792969,3.7792969 V 5.2910156 H 15.117188 v 3.0234375 c -0.881888,0.00183 -1.006784,0.00198 -1.888672,0.00195 h -0.75586 c -0.02544,0 -0.05086,0.00131 -0.07617,0.00391 -0.02492,0.00272 -0.04969,0.00662 -0.07422,0.011719 -0.02437,0.00467 -0.04848,0.010578 -0.07227,0.017578 -0.02454,0.00787 -0.04867,0.017004 -0.07227,0.027344 -0.02329,0.00928 -0.04611,0.01971 -0.06836,0.03125 -0.0215,0.01263 -0.04236,0.026316 -0.0625,0.041016 -0.02092,0.01396 -0.04113,0.028952 -0.06055,0.044922 -0.01972,0.01596 -0.03862,0.032911 -0.05664,0.050781 -0.0172,0.01806 -0.0335,0.036971 -0.04883,0.056641 -0.01602,0.02006 -0.03102,0.04092 -0.04492,0.0625 -0.01342,0.02086 -0.0258,0.042373 -0.03711,0.064453 -0.0116,0.02289 -0.02205,0.046363 -0.03125,0.070312 -0.009,0.02368 -0.01684,0.047796 -0.02344,0.072266 -0.0064,0.02382 -0.01163,0.047936 -0.01563,0.072266 -0.0046,0.02521 -0.0078,0.050632 -0.0098,0.076172 -0.0013,0.01755 -0.0019,0.035134 -0.002,0.052734 v 0.7558594 4.5351565 h 1.511719 V 9.828125 c 0.881889,3.66e-4 1.006783,-6.546e-4 1.888672,-0.00195 h 0.755859 c 0.02544,0 0.05086,-0.00131 0.07617,-0.00391 0.02492,-0.0027 0.04969,-0.0066 0.07422,-0.011719 0.02437,-0.0047 0.04847,-0.010578 0.07227,-0.017578 0.02454,-0.0079 0.04866,-0.017004 0.07227,-0.027344 0.02329,-0.0093 0.04611,-0.01971 0.06836,-0.03125 0.0215,-0.01263 0.04236,-0.026316 0.0625,-0.041016 0.02092,-0.01396 0.04113,-0.028952 0.06055,-0.044922 0.01972,-0.01596 0.03862,-0.032911 0.05664,-0.050781 0.0172,-0.01806 0.0335,-0.036971 0.04883,-0.056641 0.01602,-0.02006 0.03102,-0.04092 0.04492,-0.0625 0.01342,-0.02086 0.0258,-0.042373 0.03711,-0.064453 0.0116,-0.02289 0.02205,-0.046363 0.03125,-0.070312 0.009,-0.02368 0.01684,-0.047796 0.02344,-0.072266 0.0064,-0.02382 0.01161,-0.047936 0.01563,-0.072266 0.0046,-0.02521 0.0078,-0.050632 0.0098,-0.076172 0.0013,-0.01755 0.0038,-0.035134 0.0039,-0.052734 V 8.3144531 5.2910156 4.5351562 c 0,-0.02544 -0.0013,-0.050862 -0.0039,-0.076172 -0.0027,-0.02492 -0.0066,-0.049689 -0.01172,-0.074219 -0.0047,-0.02437 -0.01058,-0.048476 -0.01758,-0.072266 -0.0079,-0.02454 -0.017,-0.048656 -0.02734,-0.072266 -0.0093,-0.02329 -0.01971,-0.046109 -0.03125,-0.068359 -0.01263,-0.0215 -0.02632,-0.04236 -0.04102,-0.0625 -0.01396,-0.02092 -0.02895,-0.041127 -0.04492,-0.060547 -0.01596,-0.01972 -0.03291,-0.038621 -0.05078,-0.056641 -0.01806,-0.0172 -0.03697,-0.033498 -0.05664,-0.048828 -0.02006,-0.01602 -0.04092,-0.031022 -0.0625,-0.044922 -0.02086,-0.01342 -0.04237,-0.025799 -0.06445,-0.037109 -0.02289,-0.0116 -0.04636,-0.02205 -0.07031,-0.03125 -0.02368,-0.00902 -0.0478,-0.016838 -0.07227,-0.023437 -0.02382,-0.00643 -0.04794,-0.011625 -0.07227,-0.015625 -0.02521,-0.0046 -0.05063,-0.00777 -0.07617,-0.00977 -0.01755,-0.00131 -0.03513,-0.00192 -0.05273,-0.00195 h -0.755859 z m 0,2.2675781 v 2.2675781 0.7558594 c 3.59e-5,0.0176 6.925e-4,0.035184 0.00195,0.052734 0.00196,0.02554 0.00522,0.050962 0.00977,0.076172 0.00403,0.02433 0.00924,0.048446 0.015625,0.072266 0.0066,0.02447 0.014418,0.048586 0.023437,0.072266 0.00922,0.02395 0.019647,0.047422 0.03125,0.070312 0.011305,0.02208 0.023689,0.043593 0.037109,0.064453 0.013903,0.02158 0.028896,0.04244 0.044922,0.0625 0.015332,0.01967 0.031627,0.038581 0.048828,0.056641 0.018016,0.01787 0.03692,0.034821 0.056641,0.050781 0.019423,0.01597 0.03963,0.030962 0.060547,0.044922 0.020144,0.0147 0.041003,0.028386 0.0625,0.041016 0.022254,0.01154 0.045069,0.02197 0.068359,0.03125 0.023607,0.01034 0.047727,0.019474 0.072266,0.027344 0.023786,0.007 0.047903,0.012908 0.072266,0.017578 0.02453,0.0051 0.0493,0.009 0.074219,0.011719 0.025309,0.0026 0.050732,0.00391 0.076172,0.00391 h 0.7558594 1.890625 V 15.119141 15.875 c 3.59e-5,0.0176 6.926e-4,0.03518 0.00195,0.05273 0.00196,0.02554 0.00522,0.05096 0.00977,0.07617 0.00403,0.02433 0.00924,0.04845 0.015625,0.07227 0.0066,0.02447 0.014418,0.04857 0.023437,0.07227 0.00922,0.02395 0.019647,0.04742 0.03125,0.07031 0.011305,0.02208 0.023689,0.04359 0.037109,0.06445 0.013903,0.02158 0.028896,0.04244 0.044922,0.0625 0.015332,0.01967 0.031627,0.03858 0.048828,0.05664 0.018016,0.01787 0.03692,0.03482 0.056641,0.05078 0.019423,0.01597 0.03963,0.03096 0.060547,0.04492 0.020144,0.0147 0.041003,0.02839 0.0625,0.04102 0.022254,0.01154 0.045069,0.02197 0.068359,0.03125 0.023607,0.01034 0.047727,0.01947 0.072266,0.02734 0.023786,0.007 0.047903,0.01291 0.072266,0.01758 0.02453,0.0051 0.0493,0.009 0.074219,0.01172 0.025309,0.0026 0.050732,0.0039 0.076172,0.0039 H 8.6933594 13.228516 V 15.119141 H 8.6933594 V 9.8261719 9.0703125 c -3.59e-5,-0.0176 -6.925e-4,-0.035184 -0.00195,-0.052734 -0.00196,-0.02554 -0.00522,-0.050962 -0.00977,-0.076172 -0.00403,-0.02433 -0.00924,-0.048446 -0.015625,-0.072266 -0.0066,-0.02447 -0.014418,-0.048586 -0.023437,-0.072266 -0.00922,-0.02395 -0.019647,-0.047422 -0.03125,-0.070312 -0.011305,-0.02208 -0.023689,-0.043593 -0.037109,-0.064453 -0.013903,-0.02158 -0.028896,-0.04244 -0.044922,-0.0625 -0.015332,-0.01967 -0.031627,-0.038581 -0.048828,-0.056641 -0.018016,-0.01787 -0.03692,-0.034821 -0.056641,-0.050781 -0.019423,-0.01597 -0.03963,-0.030962 -0.060547,-0.044922 C 8.3431372,8.4325656 8.3222783,8.41888 8.3007812,8.40625 8.2785272,8.39471 8.2557119,8.38428 8.2324219,8.375 8.2088149,8.36466 8.1846953,8.3555263 8.1601562,8.3476562 c -0.023786,-0.007 -0.047903,-0.012908 -0.072266,-0.017578 -0.02453,-0.0051 -0.0493,-0.009 -0.074219,-0.011719 -0.025309,-0.0026 -0.050732,-0.00391 -0.076172,-0.00391 H 7.1816406 5.2910156 V 6.046875 Z m 2.2675781,0 V 7.5585938 H 9.4472656 V 14.363281 H 10.958984 V 7.5585938 h 3.402344 V 6.046875 Z m -5.29101562,7.558594 v 4.537109 0.75586 c 3.713e-5,0.01759 6.8866e-4,0.03518 0.001953,0.05273 0.001963,0.02554 0.005222,0.05096 0.009766,0.07617 0.004026,0.02433 0.009241,0.04845 0.015625,0.07227 0.006596,0.02447 0.0144185,0.04859 0.0234375,0.07227 0.009216,0.02395 0.0196465,0.04742 0.03125,0.07031 0.0113048,0.02208 0.0236896,0.04359 0.0371094,0.06445 0.0139029,0.02158 0.0288963,0.04244 0.0449219,0.0625 0.0153316,0.01967 0.0316276,0.03858 0.0488281,0.05664 0.018016,0.01787 0.0369201,0.03481 0.0566406,0.05078 0.019423,0.01597 0.03963,0.03096 0.060547,0.04492 0.020144,0.0147 0.041003,0.02839 0.0625,0.04102 0.022254,0.01154 0.045069,0.02197 0.068359,0.03125 0.023607,0.01034 0.047727,0.01947 0.072266,0.02734 0.023786,0.007 0.047903,0.01291 0.072266,0.01758 0.02453,0.0051 0.0493,0.009 0.074219,0.01172 0.025309,0.0026 0.050732,0.0039 0.076172,0.0039 h 0.7558582 4.5351563 v -1.51171 H 2.2675781 v -4.537109 z m 17.38671862,0 v 4.537109 h -4.537109 v 1.511719 h 4.537109 0.75586 c 0.02544,0 0.05086,-0.0013 0.07617,-0.0039 0.02492,-0.0027 0.04969,-0.0066 0.07422,-0.01172 0.02437,-0.0047 0.04848,-0.01058 0.07227,-0.01758 0.02454,-0.0079 0.04866,-0.017 0.07227,-0.02734 0.02329,-0.0093 0.04611,-0.01971 0.06836,-0.03125 0.0215,-0.01263 0.04236,-0.02632 0.0625,-0.04102 0.02092,-0.01396 0.04113,-0.02895 0.06055,-0.04492 0.01972,-0.01597 0.03862,-0.03291 0.05664,-0.05078 0.0172,-0.01806 0.0335,-0.03697 0.04883,-0.05664 0.01602,-0.02006 0.03102,-0.04092 0.04492,-0.0625 0.01342,-0.02086 0.0258,-0.04237 0.03711,-0.06445 0.0116,-0.02289 0.02205,-0.04636 0.03125,-0.07031 0.009,-0.02368 0.01684,-0.0478 0.02344,-0.07227 0.0064,-0.02382 0.01162,-0.04794 0.01563,-0.07227 0.0046,-0.02521 0.0078,-0.05063 0.0098,-0.07617 0.0013,-0.01755 0.0019,-0.03514 0.002,-0.05273 v -0.75586 -4.537109 z");
+
+      function compositeLogoOnCanvas(canvas, lightColor, darkColor) {
+        var w = canvas.width, h = canvas.height;
+        var ctx = canvas.getContext('2d');
+        // Fractions match the iOS native module: bg=0.40, img=0.37 of QR width
+        var bgSize  = w * 0.40;
+        var imgSize = w * 0.37;
+        var bgX = (w - bgSize) / 2, bgY = (h - bgSize) / 2;
+        var imgX = (w - imgSize) / 2, imgY = (h - imgSize) / 2;
+
+        // Light-color background square
+        ctx.fillStyle = lightColor;
+        ctx.fillRect(bgX, bgY, bgSize, bgSize);
+
+        // Scale and translate the SVG path (viewBox 0 0 20) to imgSize px, centered at imgX/imgY
+        var scale = imgSize / 20;
+        ctx.save();
+        ctx.translate(imgX, imgY);
+        ctx.scale(scale, scale);
+        ctx.fillStyle = darkColor;
+        ctx.fill(TAS_PATH);
+        ctx.restore();
+      }
+
+      function render() {
         try {
-          bwipjs.toCanvas(id, {
-            bcid:            bcid,
-            text:            text,
-            scale:           3,
-            padding:         2,
+          bwipjs.toCanvas('sig-qr', {
+            bcid:            'qrcode',
+            text:            currentUrl(),
+            scale:           4,
+            padding:         3,
             backgroundcolor: 'e3b931',
             barcolor:        '071f2c'
           });
-        } catch (e) { /* ignore render errors on tiny data */ }
+          var canvas = document.getElementById('sig-qr');
+          compositeLogoOnCanvas(canvas, '#e3b931', '#071f2c');
+        } catch (e) { /* ignore render errors */ }
       }
 
       function flash() {
-        var canvases = document.querySelectorAll('.tas-sig-canvas');
-        canvases.forEach(function (c) { c.classList.add('updating'); });
+        var canvas = document.getElementById('sig-qr');
+        if (canvas) canvas.classList.add('updating');
         setTimeout(function () {
-          canvases.forEach(function (c) { c.classList.remove('updating'); });
+          if (canvas) canvas.classList.remove('updating');
         }, 250);
       }
 
       function update() {
         flash();
         setTimeout(function () {
-          var ts  = Math.floor(Date.now() / 1000);
-          var lat = (40.7128 + (Math.random() - 0.5) * 0.002).toFixed(4);
-          var lon = (-74.006 + (Math.random() - 0.5) * 0.002).toFixed(4);
-
-          render('sig-aztec-1', 'azteccode', 'TAS:ID:'  + randHex(8));
-          render('sig-qr',      'qrcode',    'TAS:CONTENT:' + randHex(12));
-          render('sig-aztec-2', 'azteccode', 'TAS:LOC:' + lat + ',' + lon);
-          render('sig-aztec-3', 'azteccode', 'TAS:TS:'  + ts + ':' + randHex(8));
+          frameNumber++;
+          render();
           countdown = 3;
         }, 260);
       }
 
       function initSig() {
-        update();
+        render();
         setInterval(update, 3000);
         setInterval(function () {
           countdown = Math.max(0, countdown - 1);
           if (timer) timer.textContent = '— updating in ' + countdown + 's —';
         }, 1000);
-        initTooltips();
+        initTooltip();
       }
 
-      function initTooltips() {
+      function initTooltip() {
         var tooltip      = document.getElementById('sig-tooltip');
         var tooltipLabel = document.getElementById('sig-tooltip-label');
         var tooltipValue = document.getElementById('sig-tooltip-value');
-        var tooltipData = {
-          'sig-aztec-1': {
-            label: 'Identity',
-            value: function () { return 'Danny Prikazsky\nCEO of TAS'; }
-          },
-          'sig-qr': {
-            label: 'Content',
-            value: function () { return 'Verified · SHA-256\n' + randHex(8) + '…' + randHex(4); }
-          },
-          'sig-aztec-2': {
-            label: 'Location',
-            value: function () { return 'Los Angeles County\nCalifornia, USA'; }
-          },
-          'sig-aztec-3': {
-            label: 'Timestamp',
-            value: function () {
-              var now = new Date();
-              return now.toLocaleDateString('en-US', { weekday:'short', month:'short', day:'numeric', year:'numeric' })
-                + '\n' + now.toLocaleTimeString('en-US');
-            }
-          }
-        };
+        var canvas = document.getElementById('sig-qr');
+        if (!canvas) return;
 
-        document.querySelectorAll('.tas-sig-canvas').forEach(function (canvas) {
-          var data = tooltipData[canvas.id];
-          if (!data) return;
+        canvas.addEventListener('mouseenter', function () {
+          tooltipLabel.textContent = 'Verification URL';
+          tooltipValue.textContent = currentUrl();
+          var rect   = canvas.getBoundingClientRect();
+          var parent = tooltip.parentElement.getBoundingClientRect();
+          tooltip.style.left      = (rect.left - parent.left + rect.width / 2) + 'px';
+          tooltip.style.top       = (rect.top  - parent.top  - 8) + 'px';
+          tooltip.style.transform = 'translateX(-50%) translateY(-100%)';
+          tooltip.classList.add('visible');
+        });
 
-          canvas.addEventListener('mouseenter', function (e) {
-            tooltipLabel.textContent = data.label;
-            function refresh() {
-              tooltipValue.innerHTML = data.value().replace('\n', '<br>');
-            }
-            refresh();
-            // Position above the canvas
-            var rect = canvas.getBoundingClientRect();
-            var parent = tooltip.parentElement.getBoundingClientRect();
-            tooltip.style.left = (rect.left - parent.left + rect.width / 2) + 'px';
-            tooltip.style.top  = (rect.top  - parent.top  - 8) + 'px';
-            tooltip.style.transform = 'translateX(-50%) translateY(-100%)';
-            tooltip.classList.add('visible');
-          });
-
-          canvas.addEventListener('mouseleave', function () {
-            tooltip.classList.remove('visible');
-          });
+        canvas.addEventListener('mouseleave', function () {
+          tooltip.classList.remove('visible');
         });
       }
     })();
